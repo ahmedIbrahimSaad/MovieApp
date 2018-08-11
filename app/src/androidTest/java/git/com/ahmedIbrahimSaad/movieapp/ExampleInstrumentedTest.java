@@ -1,4 +1,4 @@
-package git.vogella.android.movieapp;
+package git.com.ahmedIbrahimSaad.movieapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package git.vogella.android.movieapp;
+package git.com.ahmedIbrahimSaad.movieapp;
 
 import org.junit.Test;
 
