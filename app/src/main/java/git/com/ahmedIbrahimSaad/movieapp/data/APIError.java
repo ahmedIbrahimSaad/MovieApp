@@ -17,7 +17,7 @@ public class APIError {
             TypeAdapter<GenerericResponseModel> adapter = gson.getAdapter(GenerericResponseModel.class);
                 if (response.errorBody() != null) {
                     try {
-                        generericResponseModel = adapter.fromJson(response.errorBody().string());
+                        generericResponseModel = adapter.fromJson(response.raw().body().toString());
                     } catch (IOException e) {
                         e.printStackTrace();
                         return generericResponseModel;

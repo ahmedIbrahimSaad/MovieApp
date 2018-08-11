@@ -4,11 +4,14 @@ package git.com.ahmedIbrahimSaad.movieapp.presentation.top_rated;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.com.android.movieapp.R;
 
 
@@ -26,7 +29,7 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
     RecyclerView movies_list;
     TopRatedPresenter presenter;
     MovieListAdapter movieListAdapter;
-    private LinearLayoutManager mLayoutManager;
+    private GridLayoutManager mLayoutManager;
     View view;
 
 
@@ -40,7 +43,7 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_top_rated_movies, container, false);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.HORIZONTAL, false);
         movies_list=view.findViewById(R.id.movie_list);
         doInjection();
         presenter.retriveTopRatedMovies();
@@ -76,7 +79,7 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
 
     @Override
     public void ononRetriveTopRatedMoviesFail(GenerericResponseModel responseModel) {
-
+       // Toast.makeText(getActivity(), responseModel.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
