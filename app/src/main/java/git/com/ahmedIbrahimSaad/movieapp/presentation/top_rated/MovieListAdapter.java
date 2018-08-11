@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.com.android.movieapp.R;
@@ -31,19 +32,14 @@ class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListVi
     }
 
     class MovieListViewHolder extends RecyclerView.ViewHolder {
-        //  CardView movieListContainer;
-        //  TextView nameTxt, overview, rating,releasedata;
-        ImageView movie_poster;
 
+        // ImageView movie_poster;
+        TextView title;
 
         MovieListViewHolder(View view, final OnItemClickListener listener) {
             super(view);
-           /* movieListContainer = view.findViewById(R.id.currentOrderListContainer);
-            nameTxt = view.findViewById(R.id.original_title);
-            overview = view.findViewById(R.id.overview);
-            rating = view.findViewById(R.id.rating);
-            releasedata = view.findViewById(R.id.releasedata);*/
-            movie_poster = view.findViewById(R.id.movie_poster);
+
+            title = view.findViewById(R.id.title);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,31 +74,18 @@ class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListVi
     @Override
     public void onBindViewHolder(final MovieListViewHolder holder, final int position) {
         final ResultsItem movie = movieList.get(position);
+         holder.title.setText(movie.getTitle());
 
-       /* holder.overview.setText(movie.getOverview());
-        holder.nameTxt.setText(movie.getOriginalTitle());
-        holder.rating.setText(movie.getVoteCount());
-        holder.releasedata.setText(movie.getReleaseDate());*/
        /* if (movieList.get(position).getPosterPath() != null) {
-            String image =  movieList.get(position).getPosterPath();
-            Glide.with(mContext)
-                    .load(image)
-                    .into(holder.movie_poster);
-        } else {
-            // make sure Glide doesn't load anything into this view until told otherwise
-            Glide.clear(holder.movie_poster);
-            // remove the placeholder (optional); read comments below
-            holder.movie_poster.setImageDrawable(null);
-        }*/
-        if (movieList.get(position).getPosterPath() != null) {
             String image = movieList.get(position).getPosterPath();
             Picasso.with(mContext).load(image).into(holder.movie_poster);
-        }
+        }*/
     }
-        @Override
-        public int getItemCount () {
-            return movieList.size();
-        }
+
+    @Override
+    public int getItemCount() {
+        return movieList.size();
+    }
 
 
-    }
+}

@@ -2,6 +2,7 @@ package git.com.ahmedIbrahimSaad.movieapp.presentation.top_rated;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,14 +11,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.com.android.movieapp.R;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import git.com.ahmedIbrahimSaad.movieapp.data.retrive_top_rated.new_model.ResultsItem;
 import git.com.ahmedIbrahimSaad.movieapp.Injection;
 import git.com.ahmedIbrahimSaad.movieapp.data.GenerericResponseModel;
@@ -26,12 +27,12 @@ import git.com.ahmedIbrahimSaad.movieapp.data.GenerericResponseModel;
  * A simple {@link Fragment} subclass.
  */
 public class TopRatedMoviesFragment extends Fragment implements TopRatedContract.TopRatedView{
-    RecyclerView movies_list;
+
     TopRatedPresenter presenter;
     MovieListAdapter movieListAdapter;
-    private GridLayoutManager mLayoutManager;
+    GridLayoutManager mLayoutManager;
     View view;
-
+    @BindView(R.id.movie_list)RecyclerView movies_list;
 
     public TopRatedMoviesFragment() {
         // Required empty public constructor
@@ -41,13 +42,19 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_top_rated_movies, container, false);
-        mLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.HORIZONTAL, false);
-        movies_list=view.findViewById(R.id.movie_list);
+        mLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false);
         doInjection();
-        presenter.retriveTopRatedMovies();
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ButterKnife.bind(this,view);
+        presenter.retriveTopRatedMovies();
+
+
     }
 
     @Override
@@ -62,14 +69,14 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
                 ArrayList<ResultsItem> moviesList = (ArrayList<ResultsItem>) movieList;
                 DetailsFragment detailsFragment = new DetailsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("origin title", movieList.get(position).getOriginalTitle());
-                bundle.putString("movie poster", movieList.get(position).getPosterPath());
+                bundle.putString("origin title", String.valueOf(movieList.get(position).getId()));
+                bundle.putString("movie poster", movieList.get(position).getTitle());
                 bundle.putString("overview", movieList.get(position).getOverview());
-                bundle.putString("user rating",String.valueOf( movieList.get(position).getVoteAverage()));
-                bundle.putString("release date", movieList.get(position).getReleaseDate());
+               // bundle.putString("user rating",String.valueOf( movieList.get(position).getVoteAverage()));
+              //  bundle.putString("release date", movieList.get(position).getReleaseDate());
 
                 detailsFragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().add(detailsFragment,"details").commit();
+                getFragmentManager().beginTransaction().add(R.id.fram_layout,detailsFragment,"details").commit();
             }
         });
 

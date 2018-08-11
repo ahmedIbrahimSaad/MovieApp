@@ -1,4 +1,4 @@
-package git.com.ahmedIbrahimSaad.movieapp;
+package git.com.android.movieapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
