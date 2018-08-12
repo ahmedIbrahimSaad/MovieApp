@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface WebSevices {
-    @GET("top_rated")
-    Call<Response>retriveTopRelatedMovies(@Query("api_key") String api_key);
+    @GET("top_rated?api_key=c3757a2fa6f856cf857f86b6376c5396")
+    Call<Response>retriveTopRelatedMovies();
 }

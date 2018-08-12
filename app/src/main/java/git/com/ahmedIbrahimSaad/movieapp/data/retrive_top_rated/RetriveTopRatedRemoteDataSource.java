@@ -15,7 +15,7 @@ public class RetriveTopRatedRemoteDataSource implements RetriveTopRatedDataSourc
     public void retriveTopRatedMovies(TopRatedMovieCallBack callBack) {
         Response<git.com.ahmedIbrahimSaad.movieapp.data.retrive_top_rated.new_model.Response> getTopRatedMovies= null;
         try {
-            getTopRatedMovies = APIClient.getWebService().retriveTopRelatedMovies(Constants.getApiToken()).execute();
+            getTopRatedMovies = APIClient.getWebService().retriveTopRelatedMovies().execute();
             if (getTopRatedMovies.isSuccessful()) {
                 callBack.onRetriveSuccess(getTopRatedMovies.body().getResults());
             }else
