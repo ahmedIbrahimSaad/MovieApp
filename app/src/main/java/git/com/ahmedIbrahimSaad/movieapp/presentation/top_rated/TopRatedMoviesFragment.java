@@ -75,7 +75,7 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
                 bundle.putString("user rating",String.valueOf( moviesList.get(position).getVoteAverage()));
                 bundle.putString("release date", moviesList.get(position).getReleaseDate());
                 detailsFragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().add(R.id.fram_layout,detailsFragment,"details").commit();
+                getFragmentManager().beginTransaction().add(R.id.fram_layout,detailsFragment,"details").addToBackStack("details").commit();
             }
         });
 
