@@ -9,14 +9,14 @@ public class ResultsItem{
 	private boolean video;
 	private String title;
 	private List<Integer> genreIds;
-	private String posterPath;
-	private String backdropPath;
-	private String releaseDate;
-	private double voteAverage;
+	private String poster_path;
+	private String backdrop_path;
+	private String release_date;
+	private double vote_average;
 	private double popularity;
 	private int id;
 	private boolean adult;
-	private int voteCount;
+	private int vote_count;
 
 	public void setOverview(String overview){
 		this.overview = overview;
@@ -66,36 +66,36 @@ public class ResultsItem{
 		return genreIds;
 	}
 
-	public void setPosterPath(String posterPath){
-		this.posterPath = posterPath;
+	public void setPosterPath(String poster_Path){
+		this.poster_path = poster_Path;
 	}
 
 	public String getPosterPath(){
-		return posterPath;
+		return poster_path;
 	}
 
 	public void setBackdropPath(String backdropPath){
-		this.backdropPath = backdropPath;
+		this.backdrop_path = backdropPath;
 	}
 
 	public String getBackdropPath(){
-		return backdropPath;
+		return backdrop_path;
 	}
 
 	public void setReleaseDate(String releaseDate){
-		this.releaseDate = releaseDate;
+		this.release_date = releaseDate;
 	}
 
 	public String getReleaseDate(){
-		return releaseDate;
+		return release_date;
 	}
 
 	public void setVoteAverage(double voteAverage){
-		this.voteAverage = voteAverage;
+		this.vote_average = voteAverage;
 	}
 
 	public double getVoteAverage(){
-		return voteAverage;
+		return vote_average;
 	}
 
 	public void setPopularity(double popularity){
@@ -123,11 +123,11 @@ public class ResultsItem{
 	}
 
 	public void setVoteCount(int voteCount){
-		this.voteCount = voteCount;
+		this.vote_count = voteCount;
 	}
 
 	public int getVoteCount(){
-		return voteCount;
+		return vote_count;
 	}
 
 	@Override
@@ -140,14 +140,14 @@ public class ResultsItem{
 			",video = '" + video + '\'' + 
 			",title = '" + title + '\'' + 
 			",genre_ids = '" + genreIds + '\'' + 
-			",poster_path = '" + posterPath + '\'' + 
-			",backdrop_path = '" + backdropPath + '\'' + 
-			",release_date = '" + releaseDate + '\'' + 
-			",vote_average = '" + voteAverage + '\'' + 
+			",poster_path = '" + poster_path + '\'' +
+			",backdrop_path = '" + backdrop_path + '\'' +
+			",release_date = '" + release_date + '\'' +
+			",vote_average = '" + vote_average + '\'' +
 			",popularity = '" + popularity + '\'' + 
 			",id = '" + id + '\'' + 
 			",adult = '" + adult + '\'' + 
-			",vote_count = '" + voteCount + '\'' + 
+			",vote_count = '" + vote_count + '\'' +
 			"}";
 		}
 }

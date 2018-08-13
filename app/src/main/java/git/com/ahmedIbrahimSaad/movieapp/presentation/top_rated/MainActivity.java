@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TopRatedMoviesFragment topRatedMoviesFragment=new TopRatedMoviesFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fram_layout,topRatedMoviesFragment,"top").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fram_layout,topRatedMoviesFragment,"top").addToBackStack("top").commit();
     }
 }

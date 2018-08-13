@@ -33,13 +33,13 @@ class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListVi
 
     class MovieListViewHolder extends RecyclerView.ViewHolder {
 
-        // ImageView movie_poster;
-        TextView title;
+         ImageView movie_poster;
+
 
         MovieListViewHolder(View view, final OnItemClickListener listener) {
             super(view);
 
-            title = view.findViewById(R.id.title);
+            movie_poster = view.findViewById(R.id.movie_poster);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,13 +73,13 @@ class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieListVi
 
     @Override
     public void onBindViewHolder(final MovieListViewHolder holder, final int position) {
-        final ResultsItem movie = movieList.get(position);
-         holder.title.setText(movie.getTitle());
+      //  final ResultsItem movie = movieList.get(position);
 
-       /* if (movieList.get(position).getPosterPath() != null) {
-            String image = movieList.get(position).getPosterPath();
+
+        if (movieList.get(position).getPosterPath() != null) {
+            String image = "https://image.tmdb.org/t/p/w500"+movieList.get(position).getPosterPath();
             Picasso.with(mContext).load(image).into(holder.movie_poster);
-        }*/
+        }
     }
 
     @Override

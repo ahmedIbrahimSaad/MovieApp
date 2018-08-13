@@ -40,12 +40,6 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*Bundle b = getArguments();
-        rate.setText(b.getString("user rating"));
-        release_data.setText(b.getString("release date"));
-        overview.setText(b.getString("overview"));
-        title.setText(b.getString("origin title"));
-        Picasso.with(getContext()).load(b.getString("movie poster")).into(movie_poster);*/
     }
 
     @Override
@@ -55,10 +49,11 @@ public class DetailsFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, rootView);
         Bundle b = getArguments();
-        // rate.setText(b.getString("user rating"));
-        release_data.setText(b.getString("movie poster"));
+        rate.setText(b.getString("user rating"));
+        release_data.setText(b.getString("release date"));
         overview.setText(b.getString("overview"));
         title.setText(b.getString("origin title"));
+        Picasso.with(getContext()).load("https://image.tmdb.org/t/p/w500"+b.getString("movie poster")).into(movie_poster);
         return rootView;
     }
 

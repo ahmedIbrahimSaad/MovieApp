@@ -69,12 +69,11 @@ public class TopRatedMoviesFragment extends Fragment implements TopRatedContract
                 ArrayList<ResultsItem> moviesList = (ArrayList<ResultsItem>) movieList;
                 DetailsFragment detailsFragment = new DetailsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("origin title", String.valueOf(movieList.get(position).getId()));
-                bundle.putString("movie poster", movieList.get(position).getTitle());
-                bundle.putString("overview", movieList.get(position).getOverview());
-               // bundle.putString("user rating",String.valueOf( movieList.get(position).getVoteAverage()));
-              //  bundle.putString("release date", movieList.get(position).getReleaseDate());
-
+                bundle.putString("origin title", moviesList.get(position).getTitle());
+                bundle.putString("movie poster", moviesList.get(position).getPosterPath());
+                bundle.putString("overview", moviesList.get(position).getOverview());
+                bundle.putString("user rating",String.valueOf( moviesList.get(position).getVoteAverage()));
+                bundle.putString("release date", moviesList.get(position).getReleaseDate());
                 detailsFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().add(R.id.fram_layout,detailsFragment,"details").commit();
             }
